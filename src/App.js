@@ -1,8 +1,30 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './Nijas';
+import Ninjas from './Nijas';
+import AddNinja from './AddNinja';
 
 class App extends Component {
+  state = {
+    ninjas : [
+      {name: 'Leon', age: '50', belt:'Black', id:1},
+      {name: 'John', age: '30', belt:'Red', id:2},
+      {name: 'GreenMan', age: '22', belt:'Green', id:3}
+    ]
+  }
+  
+  AddNinja = (ninja) => {
+    console.log("a new ninja :" + ninja);
+    console.log("Existing ninjas: " + this.state);
+    ninja.id = Math.random();
+    var ninjas = [...this.state.ninjas, ninja]
+    this.setState({
+      ninjas : ninjas
+    })
+    console.log("New njnjas: " + this.state);
+  }
+
   render() {
     return (
       <div className="App">
@@ -19,6 +41,9 @@ class App extends Component {
           >
             Learn React
           </a>
+          <Ninjas ninjas={this.state.ninjas} />
+          {/* pass the props of AddNinja function} */}
+          <AddNinja AddNinja = {this.AddNinja}/> 
         </header>
       </div>
     );
