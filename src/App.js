@@ -16,13 +16,23 @@ class App extends Component {
   
   AddNinja = (ninja) => {
     console.log("a new ninja :" + ninja);
-    console.log("Existing ninjas: " + this.state);
+    console.log("Existing ninjas: " + this.state.ninjas);
     ninja.id = Math.random();
     var ninjas = [...this.state.ninjas, ninja]
     this.setState({
       ninjas : ninjas
     })
-    console.log("New njnjas: " + this.state);
+    console.log("New njnjas: " + this.state.ninjas);
+  }
+
+  deleteNinja = (id) => {
+    console.log("click ninja id:" + id)
+    let ninjas = this.state.ninjas.filter(ninja => {
+      return ninja.id !== id
+    });
+    this.setState({
+      ninjas: ninjas
+    })
   }
 
   render() {
@@ -41,7 +51,7 @@ class App extends Component {
           >
             Learn React
           </a>
-          <Ninjas ninjas={this.state.ninjas} />
+          <Ninjas deleteNinja = {this.deleteNinja} ninjas={this.state.ninjas} />
           {/* pass the props of AddNinja function} */}
           <AddNinja AddNinja = {this.AddNinja}/> 
         </header>
