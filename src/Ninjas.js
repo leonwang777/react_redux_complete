@@ -1,9 +1,29 @@
 import React from 'react';
+import './Ninjas.css';
 
 // Display the data of each ninja
-const Ninjas = ({ninjas, deleteNinja}) => {
+const Ninjas = ({deleteNinja, ninjas}) => {  
+   
+    // Method 3:
     
-    // Method 1:
+    return (
+        <div className='ninja-list'>
+        {
+            ninjas.map(ninja => {
+                return  ninja.age < 50 ? (
+                <div className = 'ninja' key={ninja.id} >
+                    <div> Name: {ninja.name} </div>
+                    <div> Age: {ninja.age}   </div>
+                    <div> Belt: {ninja.belt} </div>
+                    <button onClick={ () => { deleteNinja(ninja.id)} }> Delete this { ninja.name } </button>
+                </div>
+                ) : null;
+            })
+        }
+        </div >
+    )
+    
+     // Method 1:
 
     // Get props passed from caller from App.js <Ninjas deleteNinja = {this.deleteNinja} ninjas={this.state.ninjas} /> 
     // const {ninjas} = props;
@@ -33,27 +53,6 @@ const Ninjas = ({ninjas, deleteNinja}) => {
     //    ) : null;
     // })
 
-    // Method 3:
-    
-    return (
-        <div className='ninja-list'>
-        {
-            /* for Method 1 and 2 : {ninjaList} */
-            ninjas.map(ninja => {
-                return  ninja.age < 50 ? (
-                <div className = 'ninjia' key={ninja.id} >
-                    <div> Name: {ninja.name} </div>
-                    <div> Age: {ninja.age}   </div>
-                    <div> Belt: {ninja.belt} </div>
-                    <button onClick={ () => {deleteNinja(ninja.id)}}>Delete this ninja</button>
-                </div>
-                
-                ) : null;
-            })
-        }
-        </div >
-    )
-    
 }
 
 

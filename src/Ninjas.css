@@ -1,0 +1,10 @@
+body{
+    background: rgb(56, 19, 126);
+    transition: 10s;
+}
+
+form {
+    background: #cf6d6d;
+    padding: 10px;
+    color: #6d87cfa6
+}

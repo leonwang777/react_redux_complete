@@ -11,7 +11,7 @@ class AddNinja extends Component {
 
     handleChange = (e) => {
         this.setState({
-            // set the input value according to the id of each input tag
+            // set the input value according to the id defined for each <input> tag
             // use [] that each id is mapping to name, age, belt 
             [e.target.id]: e.target.value
         })

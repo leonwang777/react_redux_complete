@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import './Nijas';
-import Ninjas from './Nijas';
+import Ninjas from './Ninjas';
 import AddNinja from './AddNinja';
 
 class App extends Component {
@@ -15,18 +14,18 @@ class App extends Component {
   }
   
   AddNinja = (ninja) => {
-    console.log("a new ninja :" + ninja);
-    console.log("Existing ninjas: " + this.state.ninjas);
+    // console.log("a new ninja :" + ninja);
+    // console.log("Existing ninjas: " + this.state.ninjas);
     ninja.id = Math.random();
     var ninjas = [...this.state.ninjas, ninja]
     this.setState({
       ninjas : ninjas
     })
-    console.log("New njnjas: " + this.state.ninjas);
+    // console.log("New njnjas: " + this.state.ninjas);
   }
 
   deleteNinja = (id) => {
-    console.log("click ninja id:" + id)
+    // console.log("click ninja id:" + id)
     let ninjas = this.state.ninjas.filter(ninja => {
       return ninja.id !== id
     });
@@ -51,7 +50,7 @@ class App extends Component {
           >
             Learn React
           </a>
-          <Ninjas deleteNinja = {this.deleteNinja} ninjas={this.state.ninjas} />
+          <Ninjas deleteNinja={this.deleteNinja} ninjas={this.state.ninjas} />
           {/* pass the props of AddNinja function} */}
           <AddNinja AddNinja = {this.AddNinja}/> 
         </header>
